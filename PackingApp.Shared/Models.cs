@@ -87,7 +87,6 @@ namespace PackingApp.Shared
         }
     }
 
-    // Перенесли сюда, чтобы и клиент, и сервис видели этот класс
     public class ProgressReport
     {
         public Individual Best { get; set; } = null!;
