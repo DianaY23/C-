@@ -62,7 +62,6 @@ namespace PackingApp
                 shapes.Add(new PackingApp.Shared.Rect(i, type, type));
             }
 
-            // Берем список сервисов из TextBox
             string inputText = ServicesInput.Text ?? "http://localhost:5267";
             var services = inputText
                 .Split(',', StringSplitOptions.RemoveEmptyEntries)
