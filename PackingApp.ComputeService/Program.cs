@@ -10,7 +10,6 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 });
 var app = builder.Build();
 
-// Основной эндпоинт с SSE (для реального времени)
 app.MapPost("/api/packing/solve", async (List<Rect> shapes, HttpContext context) =>
 {
     if (shapes == null || shapes.Count == 0) return Results.Ok(new Individual());
@@ -44,7 +43,6 @@ app.MapPost("/api/packing/solve", async (List<Rect> shapes, HttpContext context)
     return Results.Empty;
 });
 
-// Тестовый эндпоинт без SSE (возвращает чистый JSON)
 app.MapPost("/api/packing/solve/test", async (List<Rect> shapes, HttpContext context) =>
 {
     if (shapes == null || shapes.Count == 0) return Results.Ok(new Individual());
@@ -57,5 +55,4 @@ app.MapPost("/api/packing/solve/test", async (List<Rect> shapes, HttpContext con
 app.MapGet("/", () => "Сервис работает! Отправляйте POST на /api/packing/solve");
 app.Run();
 
-// Эта строчка нужна для тестов!
 public partial class Program { }
