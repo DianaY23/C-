@@ -1,0 +1,6 @@
+@PackingApp.ComputeService_HostAddress = http://localhost:5267
+
+GET {{PackingApp.ComputeService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

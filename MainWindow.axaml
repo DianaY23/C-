@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="PackingApp.MainWindow"
+        Title="Packing Solver"
+        Width="1200" Height="800"
+        Background="#111111">
+
+    <Grid ColumnDefinitions="350, *">
+        <!-- Левая панель управления -->
+        <ScrollViewer Grid.Column="0" Background="#111111">
+            <StackPanel Margin="15" Spacing="10">
+                
+                <TextBlock Text="Управление" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                
+                <!-- Поле для количества фигур -->
+                <TextBlock Text="Количество фигур (1x1, 2x2, 3x3):" Foreground="White" Margin="0,5,0,0"/>
+                <NumericUpDown x:Name="CountInput" Value="10" Minimum="1" Maximum="1000" Increment="1" FormatString="0" />
+
+                <!-- НОВОЕ ПОЛЕ: Список сервисов -->
+                <TextBlock Text="Список сервисов (через запятую):" Foreground="White" Margin="0,10,0,0"/>
+                <TextBox x:Name="ServicesInput" Text="http://localhost:5267, http://localhost:5268" />
+
+                <!-- Кнопки -->
+                <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,15,0,0">
+                    <Button x:Name="StartBtn" Content="Запустить поиск" Click="StartBtn_Click" />
+                    <Button x:Name="StopBtn" Content="Остановить" Click="StopBtn_Click" IsEnabled="False" />
+                </StackPanel>
+
+                <!-- Результат -->
+                <TextBlock Text="Лучшая площадь:" FontWeight="Bold" Foreground="White" Margin="0,15,0,0"/>
+                <TextBlock x:Name="BestAreaText" Text="-" Foreground="White" TextWrapping="Wrap"/>
+
+                <!-- График -->
+                <TextBlock Text="График приспособленности:" FontWeight="Bold" Foreground="White" Margin="0,15,0,0"/>
+                <ScottPlot:AvaPlot x:Name="FitnessPlot" Height="250" />
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Правая панель для рисования -->
+        <Border Grid.Column="1" Background="White">
+            <Canvas x:Name="DrawingCanvas" ClipToBounds="True" />
+        </Border>
+    </Grid>
+</Window>
