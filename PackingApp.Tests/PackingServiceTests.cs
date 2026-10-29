@@ -27,7 +27,6 @@ namespace PackingApp.Tests
                 new Rect(2, 2, 2)
             };
 
-            // Используем тестовый эндпоинт (без SSE)
             var response = await _client.PostAsJsonAsync("/api/packing/solve/test", shapes);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
